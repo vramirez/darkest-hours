@@ -1,3 +1,4 @@
 import functions as tw
-
-print(tw.pretty_message(tw.pretty_time_delta(tw.diff_time().total_seconds())))
+import lambda_function as lf
+#print(pretty_message(pretty_time_delta(diff_time().total_seconds())))
+lf.lambda_handler(None,None)

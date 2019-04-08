@@ -2,13 +2,14 @@ import datetime as dt
 from pytz import timezone
 
 def diff_time():
-    tz = timezone('America/Bogota')
+    
     ''' 
     FEBRUARY 1, 2019 / 3:35 PM '
     Time according to https://www.reuters.com/article/us-colombia-venezuela/colombias-duque-says-venezuelan-maduros-hours-are-numbered-idUSKCN1PQ5RF
     '''
-    duque_time = dt.datetime(2019,2,1,15,35,0,0) 
-    today = dt.datetime.now()
+    tz = timezone('America/Bogota')
+    duque_time = dt.datetime(2019,2,1,20,35,0,0,tz) #time in utc -5
+    today = dt.datetime.now().replace(tzinfo=tz)
     elapsed = today - duque_time
     return elapsed
 
