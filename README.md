@@ -3,7 +3,7 @@ Contador de las horas que lleva Maduro desde que Duque dijo que tenía las horas
 
 # Twitter
 
-Este bot se puede encontrar en [witter](https://twitter.com/BotHorasMaduro)
+Este bot se puede encontrar en [Twitter](https://twitter.com/BotHorasMaduro)
 
 # Background
 
