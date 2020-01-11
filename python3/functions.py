@@ -19,10 +19,11 @@ def pretty_time_delta(seconds):
     days, seconds = divmod(seconds, 86400)
     hours, seconds = divmod(seconds, 3600)
     minutes, seconds = divmod(seconds, 60)
+    full_hours=seconds//3600
     if days > 0:
-        return '%d dias, %d horas, %d minutos, %d segundos' % (days, hours, minutes, seconds)
+        return '%d días, %d horas, %d minutos, %d segundos (o un total de %d horas)' % (days, hours, minutes, seconds, int(full_hours))
     elif hours > 0:
-        return '%d horas, %d minutos, %d segundos' % (hours, minutes, seconds)
+        return '%d horas, %d minutos, %d segundos (o un total de %d horas)' % (hours, minutes, seconds,int(full_hours))
     elif minutes > 0:
         return '%d minutos, %d segundos' % (minutes, seconds)
     else:
@@ -32,3 +33,6 @@ def pretty_time_delta(seconds):
 def pretty_message(str):
     msg=f'Van {str} desde que @IvanDuque dijo que @NicolasMaduro tenía las horas contadas http://bit.ly/horasmaduro'
     return msg
+
+def get_only_hours(delta_time):
+    return int(delta_time.total_seconds()//3600)
