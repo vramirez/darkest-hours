@@ -16,14 +16,15 @@ def diff_time():
 
 def pretty_time_delta(seconds):
     seconds = int(seconds)
+    full_hours=seconds//3600
     days, seconds = divmod(seconds, 86400)
     hours, seconds = divmod(seconds, 3600)
     minutes, seconds = divmod(seconds, 60)
-    full_hours=seconds//3600
+    
     if days > 0:
-        return '%d días, %d horas, %d minutos, %d segundos (o un total de %d horas)' % (days, hours, minutes, seconds, int(full_hours))
+        return '%d días, %d horas, %d minutos, %d segundos (o un total de %d horas)' % (days, hours, minutes, seconds, full_hours)
     elif hours > 0:
-        return '%d horas, %d minutos, %d segundos (o un total de %d horas)' % (hours, minutes, seconds,int(full_hours))
+        return '%d horas, %d minutos, %d segundos (o un total de %d horas)' % (hours, minutes, seconds,full_hours)
     elif minutes > 0:
         return '%d minutos, %d segundos' % (minutes, seconds)
     else:
