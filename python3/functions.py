@@ -1,6 +1,6 @@
 import datetime as dt
 from pytz import timezone
-
+from ast import literal_eval
 def diff_time():
     
     ''' 
@@ -17,11 +17,17 @@ def diff_time():
 def pretty_time_delta(seconds):
     seconds = int(seconds)
     full_hours=seconds//3600
+    year, seconds = divmod(seconds,31536000)
     days, seconds = divmod(seconds, 86400)
     hours, seconds = divmod(seconds, 3600)
     minutes, seconds = divmod(seconds, 60)
     
-    if days > 0:
+    if year > 0:
+        if (year > 1):
+            return '%d años %d días, %d horas, %d minutos, %d segundos (o un total de %d horas)' % (year,days, hours, minutes, seconds, full_hours)
+        else: 
+            return '%d año %d días, %d horas, %d minutos, %d segundos (o un total de %d horas)' % (year,days, hours, minutes, seconds, full_hours)
+    elif  days > 0:   
         return '%d días, %d horas, %d minutos, %d segundos (o un total de %d horas)' % (days, hours, minutes, seconds, full_hours)
     elif hours > 0:
         return '%d horas, %d minutos, %d segundos (o un total de %d horas)' % (hours, minutes, seconds,full_hours)
@@ -31,9 +37,10 @@ def pretty_time_delta(seconds):
         return '%d segundos' % (seconds,)
 
 
-def pretty_message(str):
-    msg=f'Van {str} desde que @IvanDuque dijo que @NicolasMaduro tenía las horas contadas http://bit.ly/horasmaduro'
-    return msg
+def pretty_message(var,msg):
+    #msg=f'!\n Van {str} desde que @IvanDuque dijo que @NicolasMaduro tenía las horas contadas http://bit.ly/horasmaduro'
+    msg=literal_eval(repr(msg))
+    return msg %(var)
 
 def get_only_hours(delta_time):
     return int(delta_time.total_seconds()//3600)
